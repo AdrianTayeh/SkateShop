@@ -9,18 +9,30 @@
      <title>Document</title>
 </head>
 <body>
-    <div class="navbar">
+    <div class="navbar2">
     <h2>SkateShop Admin Panel</h2>
+    <a href="index.html">Home</a>
 </div>
 
 <div class="mainContainer">
     <h1>Admin Panel</h1>
+    
     <div class="adminPanel">
         <div class="kategoriForm">
             <h2>Skapa kategori</h2>
    <form id="newCat">
     <input type="text" placeholder="Ny kategori">
     <button>Skapa</button>
+   </form>
+   <form id="addProduct">
+    <h2 style="color:white">Add products</h2>
+    <input type="text" name="title" id="title">
+    <select name="category" id="category">
+
+    </select>
+    <label for="image">Add image</label>
+    <input type="file" id="image" name="image" accept="image/*">
+    <button>Lägg till</button>
    </form>
 </div>
     </div>

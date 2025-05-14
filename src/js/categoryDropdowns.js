@@ -1,9 +1,23 @@
-import { getCats, getProducts } from './adminPanel';
+
 
 const navbar = document.querySelector('.navbar');
 
-async function renderCats() {
-    const cats = JSON.parse(localStorage.getItem('categories'));
+export async function getCats(){
+    const response = await fetch('http://localhost:3000/categories');
+    const data = await response.json();
+    console.log(data);
+    return data;
+}
+
+export async function getSubCats(){
+    const response = await fetch('http://localhost:3000/subcats');
+    const data = await response.json();
+    return data;
+}
+
+
+export async function renderCats() {
+    const cats = await getCats();
     console.log(cats);
 
     cats.forEach(cat => {
@@ -11,7 +25,7 @@ async function renderCats() {
         dropdown.classList.add('dropdown');
         dropdown.innerHTML = `
             <button class="dropbtn">
-                ${cat}
+                ${cat.category}
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content"></div>`;
@@ -19,8 +33,10 @@ async function renderCats() {
         navbar.append(dropdown);
     });
 
-    const products = JSON.parse(localStorage.getItem('products'));
-    products.forEach(product => {
+
+
+    const subcats = await getSubCats();    
+    subcats.forEach(product => {
         const titles = document.querySelectorAll('.dropbtn');
         titles.forEach(title => {
             if (title.innerText === product.category) {
@@ -33,5 +49,7 @@ async function renderCats() {
         });
     });
 }
-
 renderCats();
+
+
+

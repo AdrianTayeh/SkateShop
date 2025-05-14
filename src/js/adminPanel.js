@@ -1,13 +1,34 @@
-import {categories} from './categories.js';
-import {products} from './categories.js';
-import { addToStorage } from './categories.js';
 
-export const getProducts = async () => {
-    return products;
+import {Product} from './Product.js';
+
+async function renderOptions(){
+    const res = await fetch('http://localhost:3000/categories');
+    const cats = await res.json();
+    const select = document.querySelector('#category');
+    cats.forEach(cat => {
+        const option = document.createElement('option');
+        option.value = cat.category;
+        option.innerText = cat.category;
+        select.append(option);
+    })
 }
+renderOptions();
 
-export const getCats = async () => {
-    return categories;
+async function postCats(category) {
+    const res = await fetch('http://localhost:3000/categories', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ category: category })
+    });
+    if (res.ok) {
+        const data = await res.json();
+        console.log('Category added:', data);
+    } else {
+        console.error('Error adding category:', res.statusText);
+    }
+    
 }
 
 const form = document.querySelector('#newCat')
@@ -15,13 +36,103 @@ form.addEventListener('submit', async  (e) => {
     e.preventDefault();
     const newCat = form.querySelector('input').value;
     if (newCat) {
-        categories.push(newCat);
         form.querySelector('input').value = '';
-        console.log(`New category added: ${newCat}`);
-        getCats();
-        addToStorage(newCat)
+        await postCats(newCat);
+        
         
     } else {
         console.log('Please enter a category name.');
     }
 })
+
+
+const form2 = document.querySelector('#addProduct');
+form2.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formdata = new FormData(form2);
+    const file = formdata.get('image');
+    let imageUrl = 'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png';
+
+    if (file && file.size > 0) {
+        imageUrl = await resizeImage(file, 300, 225); // Resize to 300x225 or any desired dimensions
+    }
+
+    const product = {
+        name: formdata.get('title'),
+        category: formdata.get('category'),
+        image: imageUrl,
+        altTxt: formdata.get('altTxt')
+    };
+    new Product(product.name, product.description, product.image, product.altTxt, product.category);
+
+    const res = await fetch('http://localhost:3000/products', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(product)
+    });
+    if (res.ok) {
+        const data = await res.json();
+        console.log('Product added:', data);
+    } else {
+        console.error('Error adding product:', res.statusText);
+    }
+    form2.reset();
+});
+
+// Helper function to resize the image
+async function resizeImage(file, maxWidth, maxHeight) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = (event) => {
+            const img = new Image();
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+
+                let width = img.width;
+                let height = img.height;
+
+                // Maintain aspect ratio
+                if (width > height) {
+                    if (width > maxWidth) {
+                        height = Math.round((height * maxWidth) / width);
+                        width = maxWidth;
+                    }
+                } else {
+                    if (height > maxHeight) {
+                        width = Math.round((width * maxHeight) / height);
+                        height = maxHeight;
+                    }
+                }
+
+                canvas.width = width;
+                canvas.height = height;
+                ctx.drawImage(img, 0, 0, width, height);
+
+                resolve(canvas.toDataURL('image/jpeg', 0.8));
+            };
+            img.onerror = (error) => reject(error);
+            img.src = event.target.result;
+        };
+        reader.onerror = (error) => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+
+
+
+
+
+
+// liten helper 
+async function convertFileToBase64(file) {
+    return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+    });
+}
+

@@ -1,0 +1,26 @@
+[
+        {
+            "category": "Men",
+            "name": "Men's Product 1"
+        },
+            {
+                "category": "Men",
+                "name": "Men's Product 2"
+            },
+            {
+                "category": "Women",
+                "name": "Women's Product 1"
+            },
+            {
+                "category": "Women",
+                "name": "Women's Product 2"
+            },
+            {
+                "category": "Kids",
+                "name": "Kids' Product 1"
+            },
+            {
+                "category": "Kids",
+                "name": "Kids' Product 2"
+            }
+        ]
