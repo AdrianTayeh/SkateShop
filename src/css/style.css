@@ -70,3 +70,10 @@ body {
     width: 30%;
     margin: 20px;
 }
+
+
+.kategoriForm{
+  background-color: #ddd;
+  height: 600px;
+  width: 300px;
+}
