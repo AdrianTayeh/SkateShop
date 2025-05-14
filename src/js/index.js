@@ -1,4 +1,4 @@
-import { setItems } from "./categories";
+import { setItems } from "./categories.js";
 setItems();
 
 document.addEventListener("DOMContentLoaded", () => {
