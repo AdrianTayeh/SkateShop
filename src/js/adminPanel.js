@@ -1,9 +1,12 @@
 import {categories} from './categories.js';
+import {products} from './categories.js';
+import { addToStorage } from './categories.js';
+
+export const getProducts = async () => {
+    return products;
+}
 
 export const getCats = async () => {
-    categories.forEach(cat => {
-        console.log(cat);
-    })
     return categories;
 }
 
@@ -16,6 +19,8 @@ form.addEventListener('submit', async  (e) => {
         form.querySelector('input').value = '';
         console.log(`New category added: ${newCat}`);
         getCats();
+        addToStorage(newCat)
+        
     } else {
         console.log('Please enter a category name.');
     }
