@@ -1,4 +1,5 @@
 /* Insert Google Fonts import tag here @import url(...)*/
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
 * {
   padding: 0;
   margin: 0;
@@ -13,6 +14,7 @@
 
 body {
   background-color: black;
+  font-family: "Inter", sans-serif;
 }
 
 .navbar {
@@ -87,7 +89,7 @@ body {
 }
 .dropdown-content a:hover {
   background-color: #ddd;
-    color: black;
+  color: black;
 }
 
 .dropdown:hover .dropdown-content {
@@ -284,7 +286,7 @@ body {
 /* Style for the text */
 .slide-text {
   position: absolute;
-  font-family: "UnifrakturMaguntia", cursive;
+  font-family: "UnifrakturMaguntia", cursive !important;
   bottom: 100px; /* Position from the bottom of the slide */
   left: 50px; /* Position from the left of the slide */
   color: white; /* Text color */
