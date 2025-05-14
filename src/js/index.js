@@ -1,3 +1,6 @@
+import { setItems } from "./categories";
+setItems();
+
 document.addEventListener("DOMContentLoaded", () => {
     const swiper = new Swiper(".swiper-container", {
         loop: true,
