@@ -118,3 +118,17 @@ body {
 .contact-form button:hover {
     background-color: #b5e418;
 }
+
+.thank-you-message {
+    background-color: #1a1a1a;
+    padding: 30px;
+    border-radius: 10px;
+    width: 80%;
+    max-width: 500px;
+    margin-top: 50px;
+    text-align: center;
+    color: white;
+}
+.thank-you-message h2 {
+    color: #C6F91F;
+}

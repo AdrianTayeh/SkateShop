@@ -57,5 +57,22 @@
 
         <button type="submit">Skicka</button>
       </form>
+
+    <div class="thank-you-message" style="display: none;">
+        <h2>Tack för att du kontaktar oss!</h2>
+        <p>Vi återkommer så snart vi kan.</p>
+    </div>
+
+    <script>
+      const form = document.querySelector(".contact-form");
+      const thankYou = document.querySelector(".thank-you-message");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.style.display = "none";
+        thankYou.style.display = "block";
+      });
+    </script>
+    
   </body>
 </html>
