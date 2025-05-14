@@ -34,3 +34,6 @@ coverage/
 .idea/
 *.sublime-workspace
 *.sublime-project
+
+*.parce-cache
+.parcel-cache
