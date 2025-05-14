@@ -1,0 +1,27 @@
+{
+  "name": "sprint-1",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "parcel ./src/index.html",
+    "build": "parcel build ./src/index.html --dist-dir public --public-url ./",
+    "clean": "del-cli ./.parcel-cache ./public ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AdrianTayeh/SkateShop.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/AdrianTayeh/SkateShop/issues"
+  },
+  "homepage": "https://github.com/AdrianTayeh/SkateShop#readme",
+  "devDependencies": {
+    "del-cli": "^6.0.0",
+    "parcel": "^2.15.0"
+  }
+}
