@@ -1,3 +1,4 @@
+/* Insert Google Fonts import tag here @import url(...)*/
 * {
   padding: 0;
   margin: 0;
@@ -203,6 +204,7 @@ body {
   align-items: center;
 }
 
+/* Hero Card Styling */
 .hero-card {
   width: 100%;
   max-width: 1200px;
@@ -221,9 +223,10 @@ body {
   object-fit: cover;
 }
 
+/* Positioning Swiper Buttons */
 .swiper-container .swiper-button-next,
 .swiper-container .swiper-button-prev {
-  top: 30% !important; 
+  top: 30% !important; /* Move closer to the top */
   transform: translateY(-50%) !important;
   width: 40px !important;
   height: 40px !important;
@@ -238,43 +241,47 @@ body {
   left: 10px !important;
 }
 
+/* Positioning Swiper Pagination */
 .swiper-container .swiper-pagination {
-  bottom: 400px !important; 
+  bottom: 400px !important; /* Move closer to the top */
   text-align: center !important;
   color: white !important;
 }
 
 .swiper-pagination-bullet {
-  background-color: gray !important; 
-  width: 12px; 
+  background-color: gray !important; /* Default bullet color */
+  width: 12px; /* Adjust bullet size */
   height: 12px;
-  opacity: 1; 
+  opacity: 1; /* Make bullets fully visible */
 }
 
 .swiper-pagination-bullet-active {
-  background-color: white !important; 
+  background-color: white !important; /* Active bullet color */
 }
 
+/* Style for the slide content */
 .slide-content {
   position: relative;
   width: 100%;
   height: 100%;
 }
 
+/* Style for the images */
 .slide-content img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
+/* Style for the text */
 .slide-text {
   position: absolute;
   font-family: "UnifrakturMaguntia", cursive;
-  bottom: 100px; 
-  left: 50px; 
-  color: white; 
-  font-size: 50px;
+  bottom: 100px; /* Position from the bottom of the slide */
+  left: 50px; /* Position from the left of the slide */
+  color: white; /* Text color */
+  font-size: 50px; /* Adjust font size */
   font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); 
-  z-index: 10; 
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+  z-index: 10; /* Ensure text appears above the image */
 }
