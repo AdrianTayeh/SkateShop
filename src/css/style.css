@@ -117,6 +117,14 @@ body {
   height: auto;
 }
 
+.image-wrapper img {
+  transition: transform 0.4s ease, opacity 0.4s ease;
+}
+
+.image-wrapper img:hover {
+  transform: scale(1.02);
+}
+
 .info-card {
   display: none;
   position: absolute;
