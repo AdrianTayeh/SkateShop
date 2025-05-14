@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Kontakta oss</title>
+    <link href="css/style.css" rel="stylesheet" />
+    <!--Insert Google Fonts CDN here-->
+    <!--
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/..." rel="stylesheet">
+    -->
+  </head>
+  <body>
+    <!-- Meny med huvudkategorier och underkategorier -->
+    <div class="navbar">
+      <div class="dropdown">
+        <button class="dropbtn">
+          Huvudkategori
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Underkategori</a>
+          <a href="#">Underkategori</a>
+          <a href="#">Underkategori</a>
+        </div>
+      </div>
+      <div class="dropdown">
+        <button class="dropbtn">
+          Huvudkategori
+          <i class="fa fa-caret-down"></i>
+        </button>
+        <div class="dropdown-content">
+          <a href="#">Underkategori</a>
+          <a href="#">Underkategori</a>
+          <a href="#">Underkategori</a>
+        </div>
+      </div>
+        <div class="dropdown">
+          <a class="dropbtn" href="form.html" target="_blank">
+            Kontakta oss
+          </a>
+        </div>
+    </div>
+    <main class="flex-container">
+      <form class="contact-form">
+        <h2>Kontakta oss</h2>
+        <label for="name">Namn</label>
+        <input type="text" id="name" name="name" required />
+
+        <label for="email">E-post</label>
+        <input type="email" id="email" name="email" required />
+
+        <label for="message">Meddelande</label>
+        <textarea id="message" name="message" rows="5" required></textarea>
+
+        <button type="submit">Skicka</button>
+      </form>
+
+    <div class="thank-you-message" style="display: none;">
+        <h2>Tack för att du kontaktar oss!</h2>
+        <p>Vi återkommer så snart vi kan.</p>
+    </div>
+
+    <script>
+      const form = document.querySelector(".contact-form");
+      const thankYou = document.querySelector(".thank-you-message");
+
+      form.addEventListener("submit", function (e) {
+        e.preventDefault();
+        form.style.display = "none";
+        thankYou.style.display = "block";
+      });
+    </script>
+    
+  </body>
+</html>
