@@ -1,29 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Template sida</title>
-    <link href="css/style.css" rel="stylesheet" />
-    <!--Insert Google Fonts CDN here-->
-    <!--
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/..." rel="stylesheet">
-    -->
-  </head>
-  <body>
-    <!-- Meny med huvudkategorier och underkategorier -->
-    <div class="navbar">
-      <div class="dropdown">
-        <button class="dropbtn">
-          Huvudkategori
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Template sida</title>
+        <link href="css/style.css" rel="stylesheet" />
+        <link
+            rel="stylesheet"
+            href="https://unpkg.com/swiper/swiper-bundle.min.css"
+        />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+        <script src="./js/index.js" defer></script>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
+            rel="stylesheet"
+        />
+    </head>
+    <body>
+        <!-- Meny med huvudkategorier och underkategorier -->
+        <div class="navbar">
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Huvudkategori
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Underkategori</a>
+                    <a href="#">Underkategori</a>
+                    <a href="#">Underkategori</a>
+                </div>
+            </div>
+            <div class="dropdown">
+                <button class="dropbtn">
+                    Huvudkategori
+                    <i class="fa fa-caret-down"></i>
+                </button>
+                <div class="dropdown-content">
+                    <a href="#">Underkategori</a>
+                    <a href="#">Underkategori</a>
+                    <a href="#">Underkategori</a>
+                </div>
+            </div>
         </div>
       </div>
       <div class="dropdown">
@@ -44,6 +63,40 @@
         </div>
     </div>
     <main>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <img
+                        src="./assets/moodboard2.jpg"
+                        alt="New Release 1"
+                    />
+                    <p class="slide-text">New Release 1</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <img
+                        src="https://via.placeholder.com/800x400?text=New+Release+2"
+                        alt="New Release 2"
+                    />
+                    <p class="slide-text">New Release 2</p>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="slide-content">
+                    <img
+                        src="https://via.placeholder.com/800x400?text=New+Release+3"
+                        alt="New Release 3"
+                    />
+                    <p class="slide-text">New Release 3</p>
+                </div>
+            </div>
+        </div>
+        <div class="swiper-pagination"></div>
+        <div class="swiper-button-next"></div>
+        <div class="swiper-button-prev"></div>
+    </div>
       <!-- Bilder visas i kolumn like kuurth.com -->
       <div class="flex-container">
         <div class="image-wrapper">

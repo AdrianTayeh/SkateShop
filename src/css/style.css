@@ -1,78 +1,90 @@
 /* Insert Google Fonts import tag here @import url(...)*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.unifrakturmaguntia-regular {
+    font-family: "UnifrakturMaguntia", cursive;
+    font-weight: 400;
+    font-style: normal;
+}
+
 body {
-  background-color: black;
+    background-color: black;
 }
 
 .navbar {
-  overflow: hidden;
-  background-color: #c6f91f;
+    overflow: hidden;
+    background-color: #c6f91f;
 }
 
 .navbar a {
-  float: left;
-  font-size: 16px;
-  text-align: center;
-  padding: 14px 16px;
-  text-decoration: none;
+    float: left;
+    font-size: 16px;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
 }
 
 .dropdown {
-  float: left;
-  overflow: hidden;
+    float: left;
+    overflow: hidden;
 }
 
 .dropdown .dropbtn {
-  font-size: 16px;
-  border: none;
-  outline: none;
-  background-color: #c6f91f;
-  color: black;
-  padding: 14px 16px;
-  font-family: inherit;
-  margin: 0;
+    font-size: 16px;
+    border: none;
+    outline: none;
+    background-color: #c6f91f;
+    color: black;
+    padding: 14px 16px;
+    font-family: inherit;
+    margin: 0;
 }
 
 .dropdown-content {
-  display: none;
-  position: absolute;
-  background-color: #c6f91f;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
-  z-index: 1;
+    display: none;
+    position: absolute;
+    background-color: #c6f91f;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
 }
 
 .dropdown-content a {
-  float: none;
-  background-color: #c6f91f;
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  text-align: left;
+    float: none;
+    background-color: #c6f91f;
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
 }
 .dropdown-content a:hover {
-  background-color: #ddd;
+    background-color: #ddd;
 }
 
 .dropdown:hover .dropdown-content {
-  display: block;
+    display: block;
 }
 
 .flex-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
 }
 
 .image-wrapper {
-  flex: 0 0 45%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  margin: 10px;
-  position: relative;
+    flex: 0 0 45%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+    position: relative;
 }
 
 .image-wrapper img {
@@ -82,22 +94,22 @@ body {
 }
 
 .info-card {
-  display: none;
-  position: absolute;
-  bottom: 10px;
-  right: 10px;
-  background-color: rgba(0, 0, 0, 0.7);
-  color: white;
-  padding: 5px, 10px;
-  border-radius: 5px;
-  font-size: 12px;
-  margin-top: 10px;
-  text-align: center;
-  z-index: 1;
+    display: none;
+    position: absolute;
+    bottom: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px, 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    margin-top: 10px;
+    text-align: center;
+    z-index: 1;
 }
 
 .image-wrapper:hover .info-card {
-  display: block;
+    display: block;
 }
 
 .contact-form {
@@ -111,7 +123,7 @@ body {
 }
 
 .contact-form h2 {
-    color: #C6F91F;
+    color: #c6f91f;
     text-align: center;
     margin-bottom: 20px;
 }
@@ -120,10 +132,11 @@ body {
     display: block;
     margin-top: 15px;
     margin-bottom: 5px;
-    color: #C6F91F;
+    color: #c6f91f;
 }
 
-.contact-form input, .contact-form textarea {
+.contact-form input,
+.contact-form textarea {
     width: 100%;
     padding: 10px;
     border: none;
@@ -136,7 +149,7 @@ body {
     margin-top: 20px;
     width: 100%;
     padding: 12px;
-    background-color: #C6F91F;
+    background-color: #c6f91f;
     color: black;
     border: none;
     border-radius: 5px;
@@ -159,5 +172,94 @@ body {
     color: white;
 }
 .thank-you-message h2 {
-    color: #C6F91F;
+    color: #c6f91f;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+/* Hero Card Styling */
+.hero-card {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 600px;
+}
+
+.swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Positioning Swiper Buttons */
+.swiper-container .swiper-button-next,
+.swiper-container .swiper-button-prev {
+    top: 30% !important; /* Move closer to the top */
+    transform: translateY(-50%) !important;
+    width: 40px !important;
+    height: 40px !important;
+    color: white !important;
+}
+
+.swiper-container .swiper-button-next {
+    right: 10px !important;
+}
+
+.swiper-container .swiper-button-prev {
+    left: 10px !important;
+}
+
+/* Positioning Swiper Pagination */
+.swiper-container .swiper-pagination {
+    bottom: 400px !important; /* Move closer to the top */
+    text-align: center !important;
+    color: white !important;
+}
+
+.swiper-pagination-bullet {
+    background-color: gray !important; /* Default bullet color */
+    width: 12px; /* Adjust bullet size */
+    height: 12px;
+    opacity: 1; /* Make bullets fully visible */
+}
+
+.swiper-pagination-bullet-active {
+    background-color: white !important; /* Active bullet color */
+}
+
+/* Style for the slide content */
+.slide-content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+/* Style for the images */
+.slide-content img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Style for the text */
+.slide-text {
+    position: absolute;
+    font-family: "UnifrakturMaguntia", cursive;
+    bottom: 100px; /* Position from the bottom of the slide */
+    left: 50px; /* Position from the left of the slide */
+    color: white; /* Text color */
+    font-size: 50px; /* Adjust font size */
+    font-weight: bold;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7); /* Add text shadow for better visibility */
+    z-index: 10; /* Ensure text appears above the image */
 }
