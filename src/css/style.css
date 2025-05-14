@@ -1,11 +1,11 @@
 /* Insert Google Fonts import tag here @import url(...)*/
 body {
-    background-color: black;
+  background-color: black;
 }
 
 .navbar {
   overflow: hidden;
-  background-color: #C6F91F;
+  background-color: #c6f91f;
 }
 
 .navbar a {
@@ -25,7 +25,7 @@ body {
   font-size: 16px;
   border: none;
   outline: none;
-  background-color: #C6F91F;
+  background-color: #c6f91f;
   color: black;
   padding: 14px 16px;
   font-family: inherit;
@@ -35,7 +35,7 @@ body {
 .dropdown-content {
   display: none;
   position: absolute;
-  background-color: #C6F91F;
+  background-color: #c6f91f;
   min-width: 160px;
   box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
@@ -43,7 +43,7 @@ body {
 
 .dropdown-content a {
   float: none;
-  background-color: #C6F91F;
+  background-color: #c6f91f;
   color: black;
   padding: 12px 16px;
   text-decoration: none;
@@ -58,15 +58,45 @@ body {
   display: block;
 }
 
-
-.flex-container{
-    display:flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+.flex-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
 }
 
-.flex-container img {
-    width: 30%;
-    margin: 20px;
+.image-wrapper {
+  flex: 0 0 45%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  position: relative;
+}
+
+.image-wrapper img {
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+.info-card {
+  display: none;
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 5px;
+  font-size: 12px;
+  margin-top: 10px;
+  text-align: center;
+  z-index: 1;
+}
+
+
+.image-wrapper:hover .info-card {
+  display: block;
 }
