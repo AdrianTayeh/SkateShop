@@ -14,7 +14,7 @@ export async function getProducts() {
 
 export async function renderProducts(products){
     flexContainer.innerHTML = '';
-    products.forEach(product => {
+    [...products].reverse().forEach(product => {
         const productCard = document.createElement('div');
         productCard.classList.add('image-wrapper');
         productCard.innerHTML = `
