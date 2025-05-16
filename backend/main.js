@@ -4,6 +4,7 @@ import fs from 'fs/promises';
 const catP = "categories.json"; 
 const prodP = "products.json";
 const subcatP = "subcats.json";
+const usersP = "users.json";
 
 const app = express();
 app.use(cors());
@@ -71,6 +72,16 @@ app.get('/products', async (req, res) => {
     }
 })
 
+app.get('/users', async (req, res) => {
+    try {
+        const data = await fs.readFile(usersP, 'utf-8');
+        const users = JSON.parse(data);
+        res.json(users);
+    } catch (error) {
+        console.error('Error reading users:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
 
 
 
