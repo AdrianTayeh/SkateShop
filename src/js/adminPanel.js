@@ -71,21 +71,33 @@ const form2 = document.querySelector('#addProduct');
 form2.addEventListener('submit', async (e) => {
     e.preventDefault();
     const formdata = new FormData(form2);
-    const file = formdata.get('image');
-    let imageUrl = 'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png';
+    const files = formdata.getAll('image');
+    let imageUrls = [];
 
-    if (file && file.size > 0) {
-        imageUrl = await resizeImage(file, 300, 225); // Resize to 300x225 or any desired dimensions
+    // If files exist and are not empty, process each file
+    if (files && files.length > 0 && files[0].size > 0) {
+        for (const file of files) {
+            if (file && file.size > 0) {
+                const resized = await resizeImage(file, 300, 225);
+                imageUrls.push(resized);
+            }
+        }
+    }
+
+    // If no images uploaded, use placeholder
+    if (imageUrls.length === 0) {
+        imageUrls = [
+            'https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png'
+        ];
     }
 
     const product = {
         name: formdata.get('title'),
         category: formdata.get('category'),
-        image: imageUrl,
+        images: imageUrls, // Now an array
         altTxt: formdata.get('altTxt'),
         subcategory: formdata.get('subcategory'),
     };
- 
 
     const res = await fetch('http://localhost:3000/products', {
         method: 'POST',
