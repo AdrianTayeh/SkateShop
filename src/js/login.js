@@ -30,7 +30,7 @@ if(!result){
     
 }
 if(result.role == "admin"){
-    window.location.href = '/admin.html';
+    window.location.href = './admin.html';
 }
 else{
     errorMsg.innerHTML = 'You do not have admin access';

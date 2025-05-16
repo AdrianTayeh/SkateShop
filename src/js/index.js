@@ -13,7 +13,8 @@ export async function renderProducts(){
             <img src="${product.image}" alt="${product.altTxt}">
             
             <h2>${product.name}</h2>
-            <p>Category: ${product.category}</p>
+            <p>${product.category}</p>
+            <p>${product.subcategory}</p>
             <div class="info-card"><span>+</span> More info</div>
           
         `;

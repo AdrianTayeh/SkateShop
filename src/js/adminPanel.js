@@ -1,5 +1,11 @@
 
-import {Product} from './Product.js';
+
+async function getSubcategories() {
+    const res = await fetch('http://localhost:3000/subcats');
+    const data = await res.json();
+    return data;
+}
+
 
 async function renderOptions(){
     const res = await fetch('http://localhost:3000/categories');
@@ -45,6 +51,20 @@ form.addEventListener('submit', async  (e) => {
     }
 })
 
+const categorySelect = document.querySelector('#category');
+const subcategorySelect = document.querySelector('#subcategory');
+
+categorySelect.addEventListener('change', async (e) => {
+    const subcats = await getSubcategories();
+   subcats.forEach(subcat => {
+    if(subcat.category == e.target.value){
+        const option = document.createElement('option');
+        option.value = subcat.name;
+        option.innerText = subcat.name;
+        subcategorySelect.append(option);
+    }
+   })
+})
 
 const form2 = document.querySelector('#addProduct');
 form2.addEventListener('submit', async (e) => {
@@ -61,9 +81,10 @@ form2.addEventListener('submit', async (e) => {
         name: formdata.get('title'),
         category: formdata.get('category'),
         image: imageUrl,
-        altTxt: formdata.get('altTxt')
+        altTxt: formdata.get('altTxt'),
+        subcategory: formdata.get('subcategory'),
     };
-    new Product(product.name, product.description, product.image, product.altTxt, product.category);
+ 
 
     const res = await fetch('http://localhost:3000/products', {
         method: 'POST',
@@ -120,7 +141,6 @@ async function resizeImage(file, maxWidth, maxHeight) {
         reader.readAsDataURL(file);
     });
 }
-
 
 
 
