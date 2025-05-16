@@ -55,6 +55,7 @@ const categorySelect = document.querySelector('#category');
 const subcategorySelect = document.querySelector('#subcategory');
 
 categorySelect.addEventListener('change', async (e) => {
+    subcategorySelect.innerHTML = ''; 
     const subcats = await getSubcategories();
    subcats.forEach(subcat => {
     if(subcat.category == e.target.value){

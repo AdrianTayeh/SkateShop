@@ -61,16 +61,16 @@ app.post('/products', async (req, res) => {
     }
 })
 
-app.get('/products', async (req, res) => {
-    try {
-        const data = await fs.readFile(prodP, 'utf-8');
-        const products = JSON.parse(data);
-        res.json(products);
-    } catch (error) {
-        console.error('Error reading products:', error);
-        res.status(500).json({ error: 'Internal server error' });
-    }
-})
+// app.get('/products', async (req, res) => {
+//     try {
+//         const data = await fs.readFile(prodP, 'utf-8');
+//         const products = JSON.parse(data);
+//         res.json(products);
+//     } catch (error) {
+//         console.error('Error reading products:', error);
+//         res.status(500).json({ error: 'Internal server error' });
+//     }
+// })
 
 app.get('/users', async (req, res) => {
     try {
@@ -86,7 +86,27 @@ app.get('/users', async (req, res) => {
 
 
 
+app.get('/products', async (req, res) => {
+    const { subcategory } = req.query;
 
+    try {
+        const fileContent = await fs.readFile(prodP, 'utf-8');
+        const products = JSON.parse(fileContent);
+
+        if (subcategory) {
+            const filteredProducts = products.filter(product =>
+                product.subcategory &&
+                product.subcategory.trim().toLowerCase() === subcategory.trim().toLowerCase()
+            );
+            res.json(filteredProducts);
+        } else {
+            res.status(400).json({ message: "Subcategory query parameter is required" });
+        }
+    } catch (error) {
+        console.error('Error reading products:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 
 
 

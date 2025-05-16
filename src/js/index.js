@@ -2,10 +2,19 @@
 
 const flexContainer = document.querySelector('.flex-container');
 
-export async function renderProducts(){
-    const res = await fetch('http://localhost:3000/products');
-    const data = await res.json();
-    data.forEach(product => {
+export async function getProducts() {
+    const response = await fetch('http://localhost:3000/products');
+    if (!response.ok) {
+        throw new Error('Network response was not ok');
+    }
+    const data = await response.json();
+    return data;
+}
+
+
+export async function renderProducts(products){
+    flexContainer.innerHTML = '';
+    products.forEach(product => {
         const productCard = document.createElement('div');
         productCard.classList.add('image-wrapper');
         productCard.innerHTML = `
@@ -26,9 +35,9 @@ export async function renderProducts(){
 
 
 
-document.addEventListener("DOMContentLoaded", () => {
-
-    renderProducts();
+document.addEventListener("DOMContentLoaded",async () => {
+const products = await getProducts();
+    renderProducts(products);
     const swiper = new Swiper(".swiper-container", {
         loop: true,
         autoplay: {
@@ -46,3 +55,4 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
+export default {renderProducts}

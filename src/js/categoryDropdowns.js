@@ -1,4 +1,16 @@
+import { renderProducts } from './index.js';
 
+async function getFilteredProducts(cat){
+    try{
+        const res = await fetch(`http://localhost:3000/products?subcategory=${cat}`);
+        const data = await res.json();
+        console.log(data);
+        return data;
+    }
+    catch(error){
+        console.error('Error fetching products:', error);
+    }  
+}
 
 const navbar = document.querySelector('.navbar');
 
@@ -29,8 +41,8 @@ export async function renderCats() {
                 <i class="fa fa-caret-down"></i>
             </button>
             <div class="dropdown-content"></div>`;
-
         navbar.append(dropdown);
+       
     });
 
 
@@ -41,10 +53,19 @@ export async function renderCats() {
         titles.forEach(title => {
             if (title.innerText === product.category) {
                 const productItem = document.createElement('a');
-                productItem.href = '#';
                 productItem.innerText = product.name;
                 const dropdownContent = title.nextElementSibling;
                 dropdownContent.append(productItem);
+                productItem.addEventListener('click', async (e) => {
+                    const products = await getFilteredProducts(product.name);
+                    if(products.length === 0){
+                        alert('No products found for this category');
+                        return;
+                    }
+                    await renderProducts(products);
+                    console.log(products);
+
+                })
             }
         });
     });
