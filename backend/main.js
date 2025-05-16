@@ -109,7 +109,16 @@ app.get('/products', async (req, res) => {
 });
 
 
-
+app.get('/all', async (req, res) => {
+    try {
+        const data = await fs.readFile(prodP, 'utf-8');
+        const products = JSON.parse(data);
+        res.json(products);
+    } catch (error) {
+        console.error('Error reading products:', error);
+        res.status(500).json({ error: 'Internal server error' });
+    }
+})
 
 
 
