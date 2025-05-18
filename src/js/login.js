@@ -30,6 +30,7 @@ if(!result){
     
 }
 if(result.role == "admin"){
+    localStorage.setItem('username', result.username);
     window.location.href = './admin.html';
 }
 else{
