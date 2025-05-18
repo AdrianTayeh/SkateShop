@@ -16,32 +16,8 @@
     <!-- Meny med huvudkategorier och underkategorier -->
     <div class="navbar">
       <div class="dropdown">
-        <button class="dropbtn">
-          Huvudkategori
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
-        </div>
+        <a class="dropbtn" href="index.html">Hem</a>
       </div>
-      <div class="dropdown">
-        <button class="dropbtn">
-          Huvudkategori
-          <i class="fa fa-caret-down"></i>
-        </button>
-        <div class="dropdown-content">
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
-          <a href="#">Underkategori</a>
-        </div>
-      </div>
-        <div class="dropdown">
-          <a class="dropbtn" href="form.html" target="_blank">
-            Kontakta oss
-          </a>
-        </div>
     </div>
     <main class="flex-container">
       <form class="contact-form">
@@ -58,11 +34,11 @@
         <button type="submit">Skicka</button>
       </form>
 
-    <div class="thank-you-message" style="display: none;">
+      <div class="thank-you-message" style="display: none">
         <h2>Tack för att du kontaktar oss!</h2>
         <p>Vi återkommer så snart vi kan.</p>
-    </div>
-
+      </div>
+    </main>
     <script>
       const form = document.querySelector(".contact-form");
       const thankYou = document.querySelector(".thank-you-message");
@@ -73,6 +49,5 @@
         thankYou.style.display = "block";
       });
     </script>
-    
   </body>
 </html>
