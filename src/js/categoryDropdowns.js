@@ -67,8 +67,39 @@ export async function renderCats() {
 
                 })
             }
+            
         });
     });
+    const titles = document.querySelectorAll('.dropbtn');
+    async function getTitledProducts(title) {
+        try {
+            const res = await fetch(`http://localhost:3000/title/${title}`);
+            const data = await res.json();
+    
+            if (!res.ok) {
+                console.error(`Error fetching products for title "${title}":`, data.error);
+                return null;
+            }
+            return data; 
+        } catch (error) {
+            console.error('Network error:', error);
+            return null; 
+        }
+    }
+    titles.forEach(title => {
+        title.addEventListener('click', async (e) => {
+            const product = await getTitledProducts(title.innerText);
+    
+            if (!product) {
+                alert(`No products found for the title "${title.innerText}"`);
+                return;
+            }
+            const products = Array.isArray(product) ? product : [product];
+    
+            await renderProducts(products);
+        });
+    });
+  
 }
 renderCats();
 
