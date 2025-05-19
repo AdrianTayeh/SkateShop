@@ -287,7 +287,7 @@ body {
 
 /* Positioning Swiper Pagination */
 .swiper-container .swiper-pagination {
-  bottom: 300px !important; /* Move closer to the top */
+  bottom: 200px !important; /* Move closer to the top */
   text-align: center !important;
   color: white !important;
 }
