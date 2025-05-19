@@ -140,11 +140,13 @@ app.get("/title/:productName", async (req, res) => {
   try {
     const data = await fs.readFile(prodP, "utf-8");
     const products = JSON.parse(data);
-    const product = products.find((p) => p.category === productName);
-    if (product) {
-      res.json(product);
+    const filteredProducts = products.filter(
+      (p) => p.category.trim().toLowerCase() === productName.trim().toLowerCase()
+    );
+    if (filteredProducts.length > 0) {
+      res.json(filteredProducts); 
     } else {
-      res.status(404).json({ error: "Product not found" });
+      res.status(404).json({ error: "No products found in this category" });
     }
   } catch (error) {
     console.error("Error reading products:", error);
