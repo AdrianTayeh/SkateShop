@@ -388,6 +388,23 @@ button {
   font-size: 40px;
 }
 
+.highlights-title {
+  font-family: "UnifrakturMaguntia", cursive;
+  color: white;
+  font-size: 40px;
+}
+
+.highlightsContainer {
+    margin-bottom: 20px;
+}
+
+.highlights-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
 .title {
   width: 100%;
   margin-left: 35px;
@@ -395,16 +412,16 @@ button {
   padding-bottom: 20px;
 }
 
-.user-products-section{
+.user-products-section {
   color: white;
 }
 
-.all-products{
+.all-products {
   color: white;
   margin-top: 20px;
 }
 
-.adminPanel{
+.adminPanel {
   display: flex;
   justify-content: space-around;
 }
@@ -446,11 +463,11 @@ button {
 .highlight-button:hover {
   background-color: #e0a800;
 }
-.contactDiv{
+.contactDiv {
   color: white;
 }
 
-.contact-card{
+.contact-card {
   padding: 10px;
   background-color: #575757;
   border-radius: 10px;
