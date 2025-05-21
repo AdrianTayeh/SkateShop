@@ -1,3 +1,9 @@
+
+
+
+
+
+
 async function getSubcategories() {
   const res = await fetch("http://localhost:3000/subcats");
   const data = await res.json();

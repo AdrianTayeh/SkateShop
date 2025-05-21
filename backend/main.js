@@ -5,6 +5,7 @@ const catP = "categories.json";
 const prodP = "products.json";
 const subcatP = "subcats.json";
 const usersP = "users.json";
+const contactP = "contactForm.json";
 
 const app = express();
 app.use(cors());
@@ -134,6 +135,35 @@ app.get("/user-products", async (req, res) => {
     res.status(500).json({ error: "Internal server error" });
   }
 });
+
+
+app.post('/contact', async (req, res) => {
+  try {
+    const fileData = await fs.readFile(contactP, 'utf-8'); 
+    const data = JSON.parse(fileData);
+    const newContact = req.body;
+    data.push(newContact);
+    await fs.writeFile(contactP, JSON.stringify(data));
+    res.status(201).json(newContact); 
+  } catch (error) {
+    console.error('Error reading contact:', error);
+    res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+
+app.get("/getcontact", async (req, res) => {
+  try{
+  const data = await fs.readFile(contactP, "utf-8");
+  const parsedData = JSON.parse(data);
+  res.json(parsedData);
+  }
+  catch (error) {
+    console.error("Error reading contact:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+})
+
 
 app.get("/title/:productName", async (req, res) => {
   const { productName } = req.params;
