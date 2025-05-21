@@ -153,30 +153,30 @@ document.addEventListener("DOMContentLoaded", async () => {
     renderProducts(products);
 
     const navbar = document.querySelector(".navbar");
-    const favoriteIcon = document.createElement("span");
-    favoriteIcon.classList.add("material-symbols-outlined");
-    favoriteIcon.id="favorite-icon";
-    favoriteIcon.textContent="favorite";
-    navbar.appendChild(favoriteIcon);
+     if (!document.getElementById("wishlist-icon")) {
+        const favoriteIcon = document.createElement("span");
+        favoriteIcon.classList.add("material-symbols-outlined");
+        favoriteIcon.id = "wishlist-icon";
+        favoriteIcon.textContent = "favorite";
+        navbar.appendChild(favoriteIcon);
 
-    const modal = document.getElementById("favorite-modal");
-    const btn = document.getElementById("favorite-icon");
-    const close = document.getElementById("close-modal");
+        const modal = document.getElementById("favorite-modal");
+        favoriteIcon.addEventListener("click", () => {
+            updateWishlistModal();
+            modal.style.display = "block";
+        });
 
-    btn.addEventListener("click", () => {
-        updateWishlistModal();
-        modal.style.display = "block";
-    });
-
-    close.addEventListener("click", () => {
-        modal.style.display = "none";
-    });
-
-    window.addEventListener("click", (event) => {
-        if (event.target === modal) {
+        const close = document.getElementById("close-modal");
+        close.addEventListener("click", () => {
             modal.style.display = "none";
-        }
-    });
+        });
+
+        window.addEventListener("click", (event) => {
+            if (event.target === modal) {
+                modal.style.display = "none";
+            }
+        });
+    }
 
     const swiper = new Swiper(".swiper-container", {
         loop: true,
