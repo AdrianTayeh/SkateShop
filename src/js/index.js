@@ -147,13 +147,12 @@ function updateWishlistModal() {
     };
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const products = await getProducts();
     renderProducts(products);
 
     const navbar = document.querySelector(".navbar");
-     if (!document.getElementById("wishlist-icon")) {
+    if (!document.getElementById("wishlist-icon")) {
         const favoriteIcon = document.createElement("span");
         favoriteIcon.classList.add("material-symbols-outlined");
         favoriteIcon.id = "wishlist-icon";
