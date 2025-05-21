@@ -1,3 +1,9 @@
+
+
+
+
+
+
 async function getSubcategories() {
   const res = await fetch("http://localhost:3000/subcats");
   const data = await res.json();
@@ -170,7 +176,86 @@ async function renderUserProducts() {
   });
 }
 
+async function listAllProducts() {
+  try {
+    const res = await fetch("http://localhost:3000/all");
+    const products = await res.json();
+
+    if (!res.ok) {
+      console.error("Error fetching all products:", products.error);
+      return;
+    }
+
+    const highlightedRes = await fetch("http://localhost:3000/highlighted");
+    const highlightedItems = await highlightedRes.json();
+
+    if (!highlightedRes.ok) {
+      console.error(
+        "Error fetching highlighted items:",
+        highlightedItems.error
+      );
+      return;
+    }
+
+    const list = document.getElementById("allProducts");
+    list.innerHTML = "";
+
+    let highlightedCount = 0;
+
+    products.forEach((product) => {
+      const li = document.createElement("li");
+      li.textContent = `Namn: ${product.name}, Kategori: ${product.category}, Subkategori: ${product.subcategory}`;
+
+      const editButton = document.createElement("button");
+      editButton.textContent = "Redigera";
+      editButton.classList.add("edit-button");
+      editButton.addEventListener("click", () => {});
+
+      const highlightButton = document.createElement("button");
+      highlightButton.textContent = "Highlight";
+      highlightButton.classList.add("highlight-button");
+
+      if (highlightedItems.includes(product.id)) {
+        highlightButton.classList.add("highlighted");
+        highlightButton.textContent = "Unhighlight";
+      }
+
+      highlightButton.addEventListener("click", async () => {
+        try {
+          const response = await fetch("http://localhost:3000/highlighted", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ productId: product.id }),
+          });
+
+          const data = await response.json();
+
+          if (response.ok) {
+            if (highlightButton.classList.contains("highlighted")) {
+              highlightButton.classList.remove("highlighted");
+              highlightButton.textContent = "Highlight";
+            } else {
+              highlightButton.classList.add("highlighted");
+              highlightButton.textContent = "Unhighlight";
+            }
+          } else {
+            alert(data.error);
+          }
+        } catch (error) {
+          console.error("Error updating highlighted items:", error);
+        }
+      });
+      li.appendChild(editButton);
+      li.appendChild(highlightButton);
+      list.appendChild(li);
+    });
+  } catch (error) {
+    console.error("Network error while fetching all products:", error);
+  }
+}
+
 renderUserProducts();
+listAllProducts();
 
 // liten helper
 // async function convertFileToBase64(file) {

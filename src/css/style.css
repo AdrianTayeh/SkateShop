@@ -440,8 +440,13 @@ button {
     padding-bottom: 20px;
 }
 
-.user-products-section {
-    color: white;
+.user-products-section{
+  color: white;
+}
+
+.all-products{
+  color: white;
+  margin-top: 20px;
 }
 
 .adminPanel {
@@ -449,21 +454,50 @@ button {
     justify-content: space-around;
 }
 
-.favorite-product-icon {
-    position: static !important;
-    display: inline-block !important;
-    color: #e74c3c;
-    font-size: 2rem;
-    vertical-align: middle;
-    cursor: pointer;
+.list-container {
+  display: flex;
+  flex-direction: column;
 }
 
-.favorite-product-icon:hover {
-    scale: 1.1;
-    transition: 0.2s ease-in-out;
+.edit-button,
+.highlight-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
 }
 
-.favorite-product-icon.active {
-    font-variation-settings: "FILL" 1;
-    color: #e74c3c;
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.highlight-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.highlight-button.highlighted {
+  background-color: #28a745;
+  color: white;
+}
+
+.highlight-button:hover {
+  background-color: #e0a800;
+}
+.contactDiv{
+  color: white;
+}
+
+.contact-card{
+  padding: 10px;
+  background-color: #575757;
+  border-radius: 10px;
+  margin: 5px;
 }
