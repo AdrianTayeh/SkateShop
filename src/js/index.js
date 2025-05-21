@@ -147,26 +147,18 @@ function updateWishlistModal() {
     };
 }
 
+
 document.addEventListener("DOMContentLoaded", async () => {
     const products = await getProducts();
     renderProducts(products);
-    const swiper = new Swiper(".swiper-container", {
-        loop: true,
-        autoplay: {
-            delay: 5000,
-        },
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-    });
-});
 
-document.addEventListener("DOMContentLoaded", () => {
+    const navbar = document.querySelector(".navbar");
+    const favoriteIcon = document.createElement("span");
+    favoriteIcon.classList.add("material-symbols-outlined");
+    favoriteIcon.id="favorite-icon";
+    favoriteIcon.textContent="favorite";
+    navbar.appendChild(favoriteIcon);
+
     const modal = document.getElementById("favorite-modal");
     const btn = document.getElementById("favorite-icon");
     const close = document.getElementById("close-modal");
@@ -184,6 +176,21 @@ document.addEventListener("DOMContentLoaded", () => {
         if (event.target === modal) {
             modal.style.display = "none";
         }
+    });
+
+    const swiper = new Swiper(".swiper-container", {
+        loop: true,
+        autoplay: {
+            delay: 5000,
+        },
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
     });
 });
 
