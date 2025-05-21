@@ -18,19 +18,28 @@
             href="https://fonts.googleapis.com/css2?family=UnifrakturMaguntia&display=swap"
             rel="stylesheet"
         />
+        <link
+            rel="stylesheet"
+            href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=favorite"
+        />
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
-        <!--Insert Google Fonts CDN here-->
-        <!--
-        <link rel="preconnect" href="https://fonts.googleapis.com">
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link href="https://fonts.googleapis.com/..." rel="stylesheet">
-    --></head>
+    </head>
     <body>
         <!-- Meny med huvudkategorier och underkategorier -->
         <div class="navbar">
             <a href="login.html">Admin</a>
             <div class="dropdown">
                 <a class="dropbtn" href="form.html"> Kontakta oss </a>
+            </div>
+            <span class="material-symbols-outlined" id="favorite-icon"
+                >favorite</span
+            >
+            <div id="favorite-modal" class="modal">
+                <div class="modal-content">
+                    <span class="close" id="close-modal">&times;</span>
+                    <h2>Wishlist</h2>
+                    <p>This is your favorites modal!</p>
+                </div>
             </div>
         </div>
         <main>
