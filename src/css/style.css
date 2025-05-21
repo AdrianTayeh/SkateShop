@@ -434,9 +434,9 @@ button {
 }
 
 .highlights-title {
-  font-family: "UnifrakturMaguntia", cursive;
-  color: white;
-  font-size: 40px;
+    font-family: "UnifrakturMaguntia", cursive;
+    color: white;
+    font-size: 40px;
 }
 
 .highlightsContainer {
@@ -458,12 +458,12 @@ button {
 }
 
 .user-products-section {
-  color: white;
+    color: white;
 }
 
 .all-products {
-  color: white;
-  margin-top: 20px;
+    color: white;
+    margin-top: 20px;
 }
 
 .adminPanel {
@@ -472,49 +472,68 @@ button {
 }
 
 .list-container {
-  display: flex;
-  flex-direction: column;
+    display: flex;
+    flex-direction: column;
 }
 
 .edit-button,
 .highlight-button {
-  margin-left: 10px;
-  padding: 5px 10px;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
 }
 
 .edit-button {
-  background-color: #007bff;
-  color: white;
+    background-color: #007bff;
+    color: white;
 }
 
 .edit-button:hover {
-  background-color: #0056b3;
+    background-color: #0056b3;
 }
 
 .highlight-button {
-  background-color: #ffc107;
-  color: black;
+    background-color: #ffc107;
+    color: black;
 }
 
 .highlight-button.highlighted {
-  background-color: #28a745;
-  color: white;
+    background-color: #28a745;
+    color: white;
 }
 
 .highlight-button:hover {
-  background-color: #e0a800;
+    background-color: #e0a800;
 }
 .contactDiv {
-  color: white;
+    color: white;
 }
 
 .contact-card {
-  padding: 10px;
-  background-color: #575757;
-  border-radius: 10px;
-  margin: 5px;
+    padding: 10px;
+    background-color: #575757;
+    border-radius: 10px;
+    margin: 5px;
+}
+
+.favorite-product-icon {
+    position: static !important;
+    display: inline-block !important;
+    color: #e74c3c;
+    font-size: 2rem;
+    vertical-align: middle;
+    cursor: pointer;
+}
+
+.favorite-product-icon:hover {
+    scale: 1.1;
+    transition: 0.2s ease-in-out;
+}
+
+.favorite-product-icon.active {
+    font-variation-settings: "FILL" 1;
+    color: #e74c3c;
 }

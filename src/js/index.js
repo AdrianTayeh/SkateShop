@@ -94,15 +94,14 @@ export async function renderProducts(products) {
 }
 
 document.querySelectorAll(".favorite-product-icon").forEach((icon, i) => {
-        icon.addEventListener("click", (e) => {
-            const product = products[products.length - 1 - i]; // because of reverse()
-            icon.classList.toggle("active");
-            toggleWishlist(product);
-            updateWishlistModal();
-            e.stopPropagation();
-        });
+    icon.addEventListener("click", (e) => {
+        const product = products[products.length - 1 - i]; // because of reverse()
+        icon.classList.toggle("active");
+        toggleWishlist(product);
+        updateWishlistModal();
+        e.stopPropagation();
     });
-}
+});
 
 function getWishlist() {
     return JSON.parse(localStorage.getItem("wishlist") || "[]");
