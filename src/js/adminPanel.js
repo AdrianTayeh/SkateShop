@@ -310,6 +310,7 @@ form2.addEventListener("submit", async (e) => {
     name: formdata.get("title"),
     category: formdata.get("category"),
     subcategory: formdata.get("subcategory"),
+    quantity: formdata.get("quantity"),
     images: imageUrls,
   };
 
