@@ -446,3 +446,13 @@ button {
 .highlight-button:hover {
   background-color: #e0a800;
 }
+.contactDiv{
+  color: white;
+}
+
+.contact-card{
+  padding: 10px;
+  background-color: #575757;
+  border-radius: 10px;
+  margin: 5px;
+}
