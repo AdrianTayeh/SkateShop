@@ -9,7 +9,6 @@ const usersP = "users.json";
 const highlightedP = "highlighted.json";
 const contactP = "contactForm.json";
 
-
 const app = express();
 app.use(cors());
 app.use(express.json());
@@ -198,34 +197,30 @@ app.get("/user-products", async (req, res) => {
   }
 });
 
-
-app.post('/contact', async (req, res) => {
+app.post("/contact", async (req, res) => {
   try {
-    const fileData = await fs.readFile(contactP, 'utf-8'); 
+    const fileData = await fs.readFile(contactP, "utf-8");
     const data = JSON.parse(fileData);
     const newContact = req.body;
     data.push(newContact);
     await fs.writeFile(contactP, JSON.stringify(data));
-    res.status(201).json(newContact); 
+    res.status(201).json(newContact);
   } catch (error) {
-    console.error('Error reading contact:', error);
-    res.status(500).json({ error: 'Internal server error' });
-  }
-});
-
-
-app.get("/getcontact", async (req, res) => {
-  try{
-  const data = await fs.readFile(contactP, "utf-8");
-  const parsedData = JSON.parse(data);
-  res.json(parsedData);
-  }
-  catch (error) {
     console.error("Error reading contact:", error);
     res.status(500).json({ error: "Internal server error" });
   }
-})
+});
 
+app.get("/getcontact", async (req, res) => {
+  try {
+    const data = await fs.readFile(contactP, "utf-8");
+    const parsedData = JSON.parse(data);
+    res.json(parsedData);
+  } catch (error) {
+    console.error("Error reading contact:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.get("/title/:productName", async (req, res) => {
   const { productName } = req.params;
@@ -243,6 +238,56 @@ app.get("/title/:productName", async (req, res) => {
     }
   } catch (error) {
     console.error("Error reading products:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.get("/products/:id", async (req, res) => {
+  const { id } = req.params;
+
+  try {
+    const data = await fs.readFile(prodP, "utf-8");
+    const products = JSON.parse(data);
+
+    const product = products.find((product) => product.id === id);
+    if (!product) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    res.status(200).json(product);
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
+
+app.put("/products/:id", async (req, res) => {
+  const { id } = req.params;
+  const updatedProduct = req.body;
+
+  try {
+    const data = await fs.readFile(prodP, "utf-8");
+    const products = JSON.parse(data);
+
+    console.log("Request ID:", id);
+    console.log(
+      "Product IDs:",
+      products.map((product) => product.id)
+    );
+
+    const productIndex = products.findIndex(
+      (product) => product.id.trim().toLowerCase() === id.trim().toLowerCase()
+    );
+    if (productIndex === -1) {
+      return res.status(404).json({ error: "Product not found" });
+    }
+
+    products[productIndex] = { ...products[productIndex], ...updatedProduct };
+
+    await fs.writeFile(prodP, JSON.stringify(products, null, 2));
+    res.status(200).json(products[productIndex]);
+  } catch (error) {
+    console.error("Error updating product:", error);
     res.status(500).json({ error: "Internal server error" });
   }
 });

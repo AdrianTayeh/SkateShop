@@ -1,34 +1,30 @@
 [
   {
     "name": "Produkt 1",
-    "category": "Women",
-    "images": [
-      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png"
-    ],
+    "category": "Mens",
+    "images": [],
     "altTxt": null,
-    "subcategory": "Women's Product 1",
+    "subcategory": "Men's Product 1",
     "createdBy": "admin",
     "id": "4da8c533-d1ce-46cc-b4bd-8b019add96ee"
   },
   {
     "name": "Produkt 2",
-    "category": "Women",
-    "images": [
-      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png"
-    ],
+    "category": "Men",
+    "images": [],
     "altTxt": null,
-    "subcategory": "Women's Product 2",
+    "subcategory": "Men's Product 2",
     "createdBy": "admin",
     "id": "4a1fa2f9-4cf6-4c2e-be3b-b0fd0c847f0f"
   },
   {
     "name": "Produkt 3",
-    "category": "Men",
+    "category": "Kids",
     "images": [
       "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png"
     ],
     "altTxt": null,
-    "subcategory": "Men's Product 1",
+    "subcategory": "Kids' Product 1",
     "createdBy": "admin",
     "id": "ae558e7c-2dac-4761-ac3a-c3b6db88bf53"
   },
@@ -86,5 +82,16 @@
     "subcategory": "Test UnderKategori 2",
     "createdBy": "admin",
     "id": "7a0c3c3c-0e69-41c6-9f5d-7d50a422e313"
+  },
+  {
+    "name": "Produkt 1 - edited",
+    "category": "Men",
+    "images": [
+      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png"
+    ],
+    "altTxt": null,
+    "subcategory": "Men's Product 1",
+    "createdBy": "admin",
+    "id": "a1b6c146-f4e0-468b-8c82-11aa64ef3d96"
   }
 ]

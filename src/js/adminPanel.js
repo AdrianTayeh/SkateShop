@@ -1,9 +1,3 @@
-
-
-
-
-
-
 async function getSubcategories() {
   const res = await fetch("http://localhost:3000/subcats");
   const data = await res.json();
@@ -22,6 +16,18 @@ async function renderOptions() {
   });
 }
 renderOptions();
+
+async function fetchProductById(productId) {
+  try {
+    const res = await fetch(`http://localhost:3000/products/${productId}`);
+    if (!res.ok) {
+      throw new Error("Failed to fetch product");
+    }
+    return await res.json();
+  } catch (error) {
+    console.error("Error fetching product:", error);
+  }
+}
 
 async function postCats(category) {
   const res = await fetch("http://localhost:3000/categories", {
@@ -69,54 +75,54 @@ categorySelect.addEventListener("change", async (e) => {
 
 const form2 = document.querySelector("#addProduct");
 const username = localStorage.getItem("username");
-form2.addEventListener("submit", async (e) => {
-  e.preventDefault();
-  const formdata = new FormData(form2);
-  const files = formdata.getAll("image");
-  let imageUrls = [];
+// form2.addEventListener("submit", async (e) => {
+//   e.preventDefault();
+//   const formdata = new FormData(form2);
+//   const files = formdata.getAll("image");
+//   let imageUrls = [];
 
-  // If files exist and are not empty, process each file
-  if (files && files.length > 0 && files[0].size > 0) {
-    for (const file of files) {
-      if (file && file.size > 0) {
-        const resized = await resizeImage(file, 300, 225);
-        imageUrls.push(resized);
-      }
-    }
-  }
+//   // If files exist and are not empty, process each file
+//   if (files && files.length > 0 && files[0].size > 0) {
+//     for (const file of files) {
+//       if (file && file.size > 0) {
+//         const resized = await resizeImage(file, 300, 225);
+//         imageUrls.push(resized);
+//       }
+//     }
+//   }
 
-  // If no images uploaded, use placeholder
-  if (imageUrls.length === 0) {
-    imageUrls = [
-      "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png",
-    ];
-  }
+//   // If no images uploaded, use placeholder
+//   if (imageUrls.length === 0) {
+//     imageUrls = [
+//       "https://storage.googleapis.com/proudcity/mebanenc/uploads/2021/03/placeholder-image-300x225.png",
+//     ];
+//   }
 
-  const product = {
-    name: formdata.get("title"),
-    category: formdata.get("category"),
-    images: imageUrls, // Now an array
-    altTxt: formdata.get("altTxt"),
-    subcategory: formdata.get("subcategory"),
-    createdBy: username,
-  };
+//   const product = {
+//     name: formdata.get("title"),
+//     category: formdata.get("category"),
+//     images: imageUrls, // Now an array
+//     altTxt: formdata.get("altTxt"),
+//     subcategory: formdata.get("subcategory"),
+//     createdBy: username,
+//   };
 
-  const res = await fetch("http://localhost:3000/products", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(product),
-  });
-  if (res.ok) {
-    const data = await res.json();
-    console.log("Product added:", data);
-    renderUserProducts();
-  } else {
-    console.error("Error adding product:", res.statusText);
-  }
-  form2.reset();
-});
+//   const res = await fetch("http://localhost:3000/products", {
+//     method: "POST",
+//     headers: {
+//       "Content-Type": "application/json",
+//     },
+//     body: JSON.stringify(product),
+//   });
+//   if (res.ok) {
+//     const data = await res.json();
+//     console.log("Product added:", data);
+//     renderUserProducts();
+//   } else {
+//     console.error("Error adding product:", res.statusText);
+//   }
+//   form2.reset();
+// });
 
 // Helper function to resize the image
 async function resizeImage(file, maxWidth, maxHeight) {
@@ -176,6 +182,8 @@ async function renderUserProducts() {
   });
 }
 
+let editingProductId = null;
+
 async function listAllProducts() {
   try {
     const res = await fetch("http://localhost:3000/all");
@@ -200,8 +208,6 @@ async function listAllProducts() {
     const list = document.getElementById("allProducts");
     list.innerHTML = "";
 
-    let highlightedCount = 0;
-
     products.forEach((product) => {
       const li = document.createElement("li");
       li.textContent = `Namn: ${product.name}, Kategori: ${product.category}, Subkategori: ${product.subcategory}`;
@@ -209,7 +215,9 @@ async function listAllProducts() {
       const editButton = document.createElement("button");
       editButton.textContent = "Redigera";
       editButton.classList.add("edit-button");
-      editButton.addEventListener("click", () => {});
+      editButton.addEventListener("click", () => {
+        populateFormForEditing(product);
+      });
 
       const highlightButton = document.createElement("button");
       highlightButton.textContent = "Highlight";
@@ -254,6 +262,97 @@ async function listAllProducts() {
   }
 }
 
+function populateFormForEditing(product) {
+  editingProductId = product.id;
+  console.log(editingProductId, product.name);
+  const form = document.querySelector("#addProduct");
+  form.querySelector("input[name='title']").value = product.name;
+  form.querySelector("select[name='category']").value = product.category;
+  form.querySelector("select[name='subcategory']").value = product.subcategory;
+
+  const imagePreview = document.querySelector("#image-preview");
+  imagePreview.innerHTML = "";
+  product.images.forEach((image) => {
+    const img = document.createElement("img");
+    img.src = image;
+    img.alt = "Product Image";
+    img.style.width = "100px";
+    img.style.marginRight = "10px";
+    imagePreview.appendChild(img);
+  });
+
+  form.scrollIntoView({ behavior: "smooth" });
+}
+
+form2.addEventListener("submit", async (e) => {
+  e.preventDefault();
+  const formdata = new FormData(form2);
+  const files = formdata.getAll("image");
+  let imageUrls = [];
+
+  if (files && files.length > 0 && files[0].size > 0) {
+    for (const file of files) {
+      if (file && file.size > 0) {
+        const resized = await resizeImage(file, 300, 225);
+        imageUrls.push(resized);
+      }
+    }
+  }
+
+  if (imageUrls.length === 0 && editingProductId) {
+    const existingProduct = await fetch(
+      `http://localhost:3000/products/${editingProductId}`
+    ).then((res) => res.json());
+    imageUrls = existingProduct.images || [];
+  }
+
+  const product = {
+    name: formdata.get("title"),
+    category: formdata.get("category"),
+    subcategory: formdata.get("subcategory"),
+    images: imageUrls,
+  };
+
+  if (editingProductId) {
+    const res = await fetch(
+      `http://localhost:3000/products/${editingProductId}`,
+      {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(product),
+      }
+    );
+
+    if (res.ok) {
+      console.log("Product updated successfully");
+      editingProductId = null;
+      form2.reset();
+      listAllProducts();
+      renderUserProducts();
+    } else {
+      console.error("Error updating product:", res.statusText);
+    }
+  } else {
+    const res = await fetch("http://localhost:3000/products", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(product),
+    });
+
+    if (res.ok) {
+      console.log("Product added successfully");
+      form2.reset();
+      listAllProducts();
+      renderUserProducts();
+    } else {
+      console.error("Error adding product:", res.statusText);
+    }
+  }
+});
 renderUserProducts();
 listAllProducts();
 
