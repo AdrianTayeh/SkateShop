@@ -33,6 +33,7 @@ export async function renderProducts(products) {
       <h2>${product.name}</h2>
       <p>${product.category}</p>
       <p>${product.subcategory}</p>
+        <p>In Stock: ${product.quantity}</p>
       <div class="info-card"><span>+</span> More info</div>
     `;
         flexContainer.append(productCard);

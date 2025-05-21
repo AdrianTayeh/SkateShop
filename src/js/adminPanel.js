@@ -98,6 +98,7 @@ form2.addEventListener("submit", async (e) => {
     images: imageUrls, // Now an array
     altTxt: formdata.get("altTxt"),
     subcategory: formdata.get("subcategory"),
+    quantity: formdata.get("quantity"),
     createdBy: username,
   };
 
