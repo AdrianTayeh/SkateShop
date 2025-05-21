@@ -57,6 +57,7 @@ export async function renderProducts(products) {
                 <h2>${product.name}</h2>
                 <p>${product.category}</p>
                 <p>${product.subcategory}</p>
+                <p>In stock: ${product.quantity}</p>
             `;
             highlightsRow.appendChild(productCard);
         });
@@ -147,13 +148,12 @@ function updateWishlistModal() {
     };
 }
 
-
 document.addEventListener("DOMContentLoaded", async () => {
     const products = await getProducts();
     renderProducts(products);
 
     const navbar = document.querySelector(".navbar");
-     if (!document.getElementById("wishlist-icon")) {
+    if (!document.getElementById("wishlist-icon")) {
         const favoriteIcon = document.createElement("span");
         favoriteIcon.classList.add("material-symbols-outlined");
         favoriteIcon.id = "wishlist-icon";
