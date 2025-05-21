@@ -399,7 +399,50 @@ button {
   color: white;
 }
 
+.all-products{
+  color: white;
+  margin-top: 20px;
+}
+
 .adminPanel{
   display: flex;
   justify-content: space-around;
+}
+
+.list-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit-button,
+.highlight-button {
+  margin-left: 10px;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.edit-button {
+  background-color: #007bff;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #0056b3;
+}
+
+.highlight-button {
+  background-color: #ffc107;
+  color: black;
+}
+
+.highlight-button.highlighted {
+  background-color: #28a745;
+  color: white;
+}
+
+.highlight-button:hover {
+  background-color: #e0a800;
 }
