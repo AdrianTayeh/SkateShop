@@ -57,6 +57,7 @@ export async function renderProducts(products) {
                 <h2>${product.name}</h2>
                 <p>${product.category}</p>
                 <p>${product.subcategory}</p>
+                <p>In stock: ${product.quantity}</p>
             `;
             highlightsRow.appendChild(productCard);
         });
