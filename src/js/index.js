@@ -76,7 +76,7 @@ export async function renderProducts(products) {
         const imgTag = imgSrc
             ? `<img src="${imgSrc}" alt="${product.altTxt || "Product image"}">`
             : "";
-        const isFavorite = wishlist.some((p) => p._id === product._id);
+        const isFavorite = wishlist.some((p) => p.id === product.id);
         const productCard = document.createElement("div");
         productCard.classList.add("image-wrapper");
         productCard.innerHTML = `
@@ -91,17 +91,18 @@ export async function renderProducts(products) {
         `;
         flexContainer.append(productCard);
     });
-}
 
-document.querySelectorAll(".favorite-product-icon").forEach((icon, i) => {
-    icon.addEventListener("click", (e) => {
-        const product = products[products.length - 1 - i]; // because of reverse()
-        icon.classList.toggle("active");
-        toggleWishlist(product);
-        updateWishlistModal();
-        e.stopPropagation();
+    // ADD THIS: Attach event listeners after rendering
+    document.querySelectorAll(".favorite-product-icon").forEach((icon, i) => {
+        icon.addEventListener("click", (e) => {
+            const product = products[products.length - 1 - i]; // because of reverse()
+            icon.classList.toggle("active");
+            toggleWishlist(product);
+            updateWishlistModal();
+            e.stopPropagation();
+        });
     });
-});
+}
 
 function getWishlist() {
     return JSON.parse(localStorage.getItem("wishlist") || "[]");
@@ -113,9 +114,9 @@ function saveWishlist(wishlist) {
 
 function toggleWishlist(product) {
     let wishlist = getWishlist();
-    const exists = wishlist.find((p) => p._id === product._id);
+    const exists = wishlist.find((p) => p.id === product.id);
     if (exists) {
-        wishlist = wishlist.filter((p) => p._id !== product._id);
+        wishlist = wishlist.filter((p) => p.id !== product.id);
     } else {
         wishlist.push(product);
     }
