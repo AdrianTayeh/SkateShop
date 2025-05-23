@@ -88,7 +88,9 @@ export async function renderProducts(products) {
             <h2>${product.name}</h2>
             <p>${product.category}</p>
             <p>${product.subcategory}</p>
-            <div class="info-card"><span>+</span> More info</div>
+            <div class="info-card" data-id="${
+                product.id
+            }"><span>+</span> More info</div>
         `;
         flexContainer.append(productCard);
     });
@@ -101,6 +103,13 @@ export async function renderProducts(products) {
             toggleWishlist(product);
             updateWishlistModal();
             e.stopPropagation();
+        });
+    });
+
+    document.querySelectorAll(".info-card").forEach((card) => {
+        card.addEventListener("click", (e) => {
+            const productId = card.getAttribute("data-id");
+            window.location.href = `viewPage.html?id=${productId}`;
         });
     });
 }
