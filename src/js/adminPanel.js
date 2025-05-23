@@ -269,6 +269,8 @@ function populateFormForEditing(product) {
   form.querySelector("input[name='title']").value = product.name;
   form.querySelector("select[name='category']").value = product.category;
   form.querySelector("select[name='subcategory']").value = product.subcategory;
+  form.querySelector("textarea[name='description']").value = product.description;
+  form.querySelector("input[name='quantity']").value = product.quantity;
 
   const imagePreview = document.querySelector("#image-preview");
   imagePreview.innerHTML = "";
@@ -310,6 +312,7 @@ form2.addEventListener("submit", async (e) => {
     name: formdata.get("title"),
     category: formdata.get("category"),
     subcategory: formdata.get("subcategory"),
+    description: formdata.get("description"),
     quantity: formdata.get("quantity"),
     images: imageUrls,
   };

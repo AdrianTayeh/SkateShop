@@ -5,6 +5,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>SkateShop</title>
         <link href="css/style.css" rel="stylesheet" />
+        <script src="js/productDetails.js" type="module"></script>
+        <script src="js/categoryDropdowns.js" type="module"></script>
+        <!-- <script src="js/addProduct.js" type="module"></script> -->
         <link
             rel="stylesheet"
             href="https://unpkg.com/swiper/swiper-bundle.min.css"
@@ -19,9 +22,13 @@
             rel="stylesheet"
             href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
         />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
         <div class="navbar">
+            <a href="index.html" id="home-link">
+                <img src="./assets/logo.png" alt="SkateShop Logo" />
+            </a>
             <a href="login.html">Admin</a>
             <div class="dropdown">
                 <a class="dropbtn" href="form.html"> Kontakta oss </a>
@@ -34,14 +41,7 @@
                 </div>
             </div>
         </div>
-        <div class="product-detail">
-            <h1>Product Name</h1>
-            <img src="placeholder.jpg" alt="Product image" />
-            <p>Category: Skateboards</p>
-            <p>Subcategory: Street</p>
-            <p>Description: This is a placeholder for product details.</p>
-            <p>In stock: 10</p>
-            <a href="index.html">Back to products</a>
+        <div id="product-detail">
         </div>
     </body>
 </html>

@@ -22,7 +22,7 @@ body {
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    padding: 10px 20px;
+    padding: 10px;
     position: sticky;
     top: 0;
     z-index: 10000;
@@ -47,6 +47,20 @@ body {
     background-color: #b5e418;
     color: white;
     border-radius: 5px;
+}
+
+.navbar #home-link {
+    display: inline-block;
+    height: 110px; /* Adjust height for the logo */
+    width: 110px; /* Adjust width for the logo */
+}
+
+
+.navbar #home-link img {
+    height: 100%; /* Make the image fill the link's height */
+    width: 100%; /* Make the image fill the link's width */
+    object-fit: contain; /* Ensure the image scales proportionally */
+    border-radius: 50%; /* Optional: Make the logo circular */
 }
 
 .dropdown {
@@ -537,4 +551,50 @@ button {
 .favorite-product-icon.active {
     font-variation-settings: "FILL" 1;
     color: #e74c3c;
+}
+
+#product-detail {
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 50px;
+}
+
+#product-info {
+    background-color: #1a1a1a;
+    padding: 20px;
+    border-radius: 10px;
+    width: 60%; /* Adjust width as needed */
+    max-width: 600px;
+    text-align: left; /* Align text to the left */
+    color: red;
+}
+
+#product-container {
+  display: flex;
+  align-items: flex-start; /* Align items at the top */
+  gap: 20px; /* Add space between images and product info */
+}
+
+.product-images {
+  display: flex;
+  flex-direction: column; /* Stack images vertically */
+  gap: 10px; /* Add space between the images */
+}
+
+.product-images img {
+  max-width: 100%; /* Make images responsive */
+  height: 250px; /* Maintain aspect ratio */
+  border-radius: 10px; /* Optional: Add rounded corners */
+}
+
+.product-info {
+  background-color: #1a1a1a;
+  padding: 20px;
+  border-radius: 10px;
+  width: 60%; /* Adjust width as needed */
+  max-width: 600px;
+  text-align: left; /* Align text to the left */
+  color: white;
 }

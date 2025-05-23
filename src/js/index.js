@@ -108,8 +108,9 @@ export async function renderProducts(products) {
 
     document.querySelectorAll(".info-card").forEach((card) => {
         card.addEventListener("click", (e) => {
+            e.stopPropagation();
             const productId = card.getAttribute("data-id");
-            window.location.href = `viewPage.html?id=${productId}`;
+            window.location.href = `./viewPage.html?id=${productId}`
         });
     });
 }
