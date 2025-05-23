@@ -30,8 +30,14 @@
         <div class="navbar">
             <a href="login.html">Admin</a>
             <div class="dropdown">
-                <a class="dropbtn" href="form.html"> Kontakta oss </a>
-            </div>
+                <a class="dropbtn" href="form.html">Kontakta oss</a>
+        </div>
+
+        <form id="searchForm" class="navbar-search">
+            <input type="text" id="searchInput" placeholder="Search products..." />
+            <button type="submit">Search</button>
+        </form>
+        
         </div>
         <main>
             <!-- Bilder visas i kolumn like kuurth.com -->
@@ -65,5 +71,6 @@
             </div>
             <div class="flex-container"></div>
         </main>
+        <div id="results" class="flex-container"></div>
     </body>
 </html>
