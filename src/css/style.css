@@ -418,12 +418,18 @@ input {
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
+  padding: 10px 20px;
+  background-color: #a2cc1a;
+  font-family: Inter;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #8abf16;
+  transition: background-color 0.3s ease;
 }
 
 .login-overlay {
@@ -597,4 +603,10 @@ button {
   max-width: 600px;
   text-align: left; /* Align text to the left */
   color: white;
+  justify-content: space-around;
+}
+
+#searchInput:focus-visible {
+  outline: none;
+  border: 1px solid #8abf16;
 }

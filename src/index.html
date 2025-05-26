@@ -25,14 +25,18 @@
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
     </head>
     <body>
-        <!-- Meny med huvudkategorier och underkategorier -->
         <div class="navbar">
             <a href="index.html" id="home-link">
                 <img src="./assets/logo.png" alt="SkateShop Logo" />
             </a>
+            <form id="searchForm" class="navbar-search">
+                <input type="text" id="searchInput" placeholder="Search products..." />
+                <button type="submit">Search</button>
+            </form>
+
             <a href="login.html">Admin</a>
             <div class="dropdown">
-                <a class="dropbtn" href="form.html"> Kontakta oss </a>
+                <a class="dropbtn" href="form.html">Kontakta oss</a>
             </div>
             <div id="favorite-modal" class="modal">
                 <div class="modal-content">
@@ -42,6 +46,7 @@
                 </div>
             </div>
         </div>
+
         <main>
             <!-- Bilder visas i kolumn like kuurth.com -->
             <div class="swiper-container">
@@ -72,6 +77,7 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
+
             <div class="flex-container"></div>
         </main>
     </body>

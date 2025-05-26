@@ -245,11 +245,11 @@ app.get("/title/:productName", async (req, res) => {
 app.get("/products/:id", async (req, res) => {
   const { id } = req.params;
 
-  try {
+    try {
     const data = await fs.readFile(prodP, "utf-8");
     const products = JSON.parse(data);
 
-    const product = products.find((product) => product.id === id);
+        const product = products.find((product) => product.id === id);
     if (!product) {
       return res.status(404).json({ error: "Product not found" });
     }
@@ -305,6 +305,39 @@ async function initializeHighlightedItems() {
 }
 
 initializeHighlightedItems();
+
+app.get("/search", async (req, res) => {
+  const query = req.query.q?.toLowerCase();
+
+  if (!query) {
+    return res.status(400).json({ error: "Missing search query parameter 'q'" });
+  }
+
+    function normalize(str) {
+    return str?.toLowerCase().replace(/[\s\-]/g, "");
+  }
+
+  try {
+    const data = await fs.readFile(prodP, "utf-8");
+    const products = JSON.parse(data);
+
+    const normQuery = normalize(query);
+
+    const filtered = products.filter((p) => {
+      return (
+        normalize(p.name).includes(normQuery) ||
+        normalize(p.category).includes(normQuery) ||
+        normalize(p.subcategory).includes(normQuery)
+      );
+    });
+
+    res.setHeader("Content-Type", "application/json");
+    res.json(filtered);
+  } catch (error) {
+    console.error("Error reading products:", error);
+    res.status(500).json({ error: "Internal server error" });
+  }
+});
 
 app.listen(3000, () => {
   console.log("Server is running on port 3000");
