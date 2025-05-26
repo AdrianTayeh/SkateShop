@@ -56,6 +56,32 @@ document.addEventListener("DOMContentLoaded", async () => {
             prevEl: ".swiper-button-prev",
         },
     });
+
+    const form = document.getElementById("searchForm");
+    const input = document.getElementById("searchInput");
+
+    if (form && input) {
+        form.addEventListener("submit", async (e) => {
+        e.preventDefault();
+        const query = input.value.trim();
+        if (!query) return;
+
+        try {
+            const res = await fetch(`http://localhost:3000/search?q=${encodeURIComponent(query)}`);
+            const products = await res.json();
+
+            if (products.length === 0) {
+            flexContainer.innerHTML = "<p style='color:white'>No products found.</p>";
+            return;
+            }
+
+            renderProducts(products);
+        } catch (err) {
+            console.error("Search error:", err);
+            flexContainer.innerHTML = "<p style='color:white'>Something went wrong. Try again.</p>";
+      }
+    });
+  }
 });
 
 export default { renderProducts };

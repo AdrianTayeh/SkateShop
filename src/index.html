@@ -26,19 +26,18 @@
         <link href="https://fonts.googleapis.com/..." rel="stylesheet">
     --></head>
     <body>
-        <!-- Meny med huvudkategorier och underkategorier -->
         <div class="navbar">
+            <form id="searchForm" class="navbar-search">
+                <input type="text" id="searchInput" placeholder="Search products..." />
+                <button type="submit">Search</button>
+            </form>
+
             <a href="login.html">Admin</a>
             <div class="dropdown">
                 <a class="dropbtn" href="form.html">Kontakta oss</a>
+            </div>
         </div>
 
-        <form id="searchForm" class="navbar-search">
-            <input type="text" id="searchInput" placeholder="Search products..." />
-            <button type="submit">Search</button>
-        </form>
-        
-        </div>
         <main>
             <!-- Bilder visas i kolumn like kuurth.com -->
             <div class="swiper-container">
@@ -69,8 +68,8 @@
                 <div class="swiper-button-next"></div>
                 <div class="swiper-button-prev"></div>
             </div>
+
             <div class="flex-container"></div>
         </main>
-        <div id="results" class="flex-container"></div>
     </body>
 </html>
