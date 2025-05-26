@@ -329,7 +329,7 @@ body {
 /* Positioning Swiper Buttons */
 .swiper-container .swiper-button-next,
 .swiper-container .swiper-button-prev {
-    top: 30% !important; /* Move closer to the top */
+    top: 40% !important; /* Move closer to the top */
     transform: translateY(-50%) !important;
     width: 40px !important;
     height: 40px !important;
@@ -457,6 +457,7 @@ button:hover {
     font-family: "UnifrakturMaguntia", cursive;
     color: white;
     font-size: 40px;
+    padding: 20px;
 }
 
 .highlightsContainer {
