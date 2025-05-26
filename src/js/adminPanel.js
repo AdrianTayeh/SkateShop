@@ -316,6 +316,8 @@ form2.addEventListener("submit", async (e) => {
     quantity: formdata.get("quantity"),
     images: imageUrls,
   };
+  if(product.quantity === "" || product.quantity === null || product.quantity === undefined) {
+    product.quantity = 0; }
 
   if (editingProductId) {
     const res = await fetch(
